@@ -20,8 +20,8 @@ def setup_rpi():
   GPIO.setmode(GPIO.BCM)
   GPIO.setup(TRIGGER_PIN, GPIO.OUT)
   GPIO.setup(ECHO_PIN, GPIO.IN)
-  GPIO.setup(LED_PIN, GPIO.LOW)
-  GPIO.output(buzzer, GPIO.LOW)
+  GPIO.setup(LED_PIN, GPIO.OUT)
+  GPIO.output(buzzer, GPIO.OUT)
 
 def set_default_values():
   print("Initialize Default Values")
@@ -33,6 +33,7 @@ def send_data_to_thingSpeak(calculated_distance)
 
 #JSON payload, send data to ThingSpeak
 payload = {'api_key':API_KEY,'field1':calculated _distance,'field2':led_status,'field3':buzzer_status}
+requests.get(URL,params=payload)
 
 def check_for_object(calculated distance)
   global led_status
